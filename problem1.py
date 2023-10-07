@@ -6,7 +6,20 @@
 
 def data(weight, height):
     imc = weight / (height**2)
-    return print(F"Your name is: {name} and your imc is: {imc}")
+    
+    category = str
+    
+    if imc< 18.5:
+        category = str("Infrapeso")
+    elif 18.5<=imc<25.0:
+        category = str("Normal")
+    elif imc >= 25.0:
+        category = str("SobrePeso")
+        
+    return print(F"""
+Your name is: {name} 
+and your imc is: {imc} your are in category: {category}
+""")
 
 
 if __name__ == '__main__':
@@ -14,3 +27,4 @@ if __name__ == '__main__':
     weight = float(input("enter your weight in KG: "))
     height = float(input("enter your height in MTS: "))
     data(weight, height)
+    
