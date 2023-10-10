@@ -16,8 +16,8 @@ def data(weight, height): #[1] funtion defined whit 2 variables
     elif imc >= 25.0:
         category = str("SobrePeso")
         
-    return print(F""" 
-Your name is: {name} 
+    return print(F"""
+Your name is: {name}
 and your imc is: {imc} your are in category: {category}
 """)
 
