@@ -22,10 +22,9 @@ def data(age, months):
     Value to pay: {value_month * months}
     """)    
     
+    
 if __name__ == '__main__':
     name = input("\n Enter a name: ")
     age = int(input(" register your age: "))
     months = int(input(" Mounts of inscripcion: "))
     data(age, months)
-
-
