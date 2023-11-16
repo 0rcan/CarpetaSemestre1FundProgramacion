@@ -1,0 +1,66 @@
+import tkinter as J
+
+def sumar_numeros():
+    numero1 = int(entrada.get())
+    numero2 = int(entrada2.get()) # Var numero
+    resultadoa= numero1 + numero2 # Variable resultado
+    resultado1.configure(text = f"El resultado es: {resultadoa}",font = ("arial",12)) # Estilos del resultado
+    
+def restar_numeros():
+    numero1 = int(entrada.get())
+    numero2 = int(entrada2.get()) # Var numero
+    resultadob = numero1 - numero2 # Variable resultado
+    resultado2.configure(text = f"El resultado es: {resultadob}",font = ("arial",12)) # Estilos del resultado
+    
+def dividir_numeros():
+    numero1 = int(entrada.get())
+    numero2 = int(entrada2.get()) # Var numero
+    resultadoc = numero1 / numero2 # Variable resultado
+    resultado3.configure(text = f"El resultado es: {resultadoc}",font = ("arial",12)) # Estilos del resultado
+    
+def multiplicar_numeros():
+    numero1 = int(entrada.get())
+    numero2 = int(entrada2.get()) # Var numero
+    resultadod = numero1 * numero2 # Variable resultado
+    resultado4.configure(text = f"El resultado es: {resultadod}",font = ("arial",12)) # Estilos del resultado
+    
+ventana = J.Tk()
+ventana.geometry("1000x1200") # Crea ventana
+ventana.title("Calculadora")
+ventana.resizable(False,True)
+
+texto = J.Label(ventana, text = "Calculadora python") # Label permite añadir texto en la ventana
+texto.grid(row = 0,column = 0) # Imprime en la ventana
+
+texto2 = J.Label(ventana, text = "Ingrese el primer numero")
+texto2.grid(row = 2,column = 1)
+
+entrada = J.Entry(ventana) # Crea un campo
+entrada.grid(row = 3,column = 1)
+
+    
+texto3 = J.Label(ventana, text = "Ingrese el segundo numero")
+texto3.grid(row = 2,column = 2)
+
+entrada2 = J.Entry(ventana)
+entrada2.grid(row = 3,column = 2)
+
+
+boton = J.Button(ventana, text = "Sumar numeros", command=sumar_numeros) # Crea un botón que adetro tiene un texto
+boton.grid(row = 4,column = 1)
+
+boton2 = J.Button(ventana, text = "Restar numeros", command=restar_numeros) # Crea un botón que adetro tiene un texto
+boton2.grid(row = 4,column = 2)
+
+boton3 = J.Button(ventana, text = "Dividir numeros", command=dividir_numeros) # Crea un botón que adetro tiene un texto
+boton3.grid(row = 4,column = 3)
+
+boton4 = J.Button(ventana, text = "Multiplicar numeros", command=multiplicar_numeros) # Crea un botón que adetro tiene un texto
+boton4.grid(row = 4,column = 4)
+
+resultado1 = J.Label(ventana,text="") 
+resultado2 = J.Label(ventana,text="") 
+resultado3 = J.Label(ventana,text="") 
+resultado4 = J.Label(ventana,text="") 
+texto.grid(row = 5,column = 1)
+ventana.mainloop() # Es un siclo y va siempre abajo
