@@ -1,25 +1,36 @@
 # JOSUE JACINTO ZAMBRANO LOAIZA 2380741-3743
-# Integrante2: PrimerNombre SegundoApellido – código2
-# Integrante2: PrimerNombre SegundoApellido – código3
+# JESUS ALERTO TUNUBALA DAGUA 2379924-3743
+# Integrante3: PrimerNombre SegundoApellido – código3
 
 # Docente: Luis Germán Toro Pareja
 # Número de grupo: 52
 # Proyecto Final restaurante
 
 import tkinter as tk
+
 # Creacion de la Ventana
-window = tk.Tk()
-window.geometry("700x700")
-window.title("Mi Restaurante")
+windowA = tk.Tk()
+windowA.geometry("500x500")
+windowA.title("Mi Restaurante")
 
-text = tk.Label(window, text="Mi Restaurante")
-text.configure(font=("arial", 17)) # Estilos del texto
-text.grid(row=1, column=1) # .grid Imprime el elemento
+textA = tk.Label(windowA, text="Mi Restaurante")
 
-button = tk.Button(window, text= "to register")
-button.grid(row=4, column=7)
+textA.configure(font=("arial", 17))  # Estilos del texto
+textA.place(relx=0.25,rely=0.1,relwidth=0.5)  # Imprime el elemento con determinada posición
 
-button2 = tk.Button(window, text= "log in")
-button2.grid(row=5, column=7)
+# Descripción del restaurante
 
-window.mainloop() # Permite mantener en siclo el programa
+textB = tk.Label(windowA, text="""Nuestro restaurante es un lugar donde ofrecemos una variedad 
+de platos deliciosos y recursos culinarios para el público para 
+satisfacer tus necesidades culinarias y hacerte 
+disfrutar de una experiencia gastronómica exepcional.""")
+textB.configure(bg="#5F25B4", fg="#ffffff")
+textB.place(relx=0.16,rely=0.2,relheight=0.3,relwidth=0.7)
+
+buttonA = tk.Button(windowA, text="Registrarse")
+buttonA.place(relx=0.25,rely=0.6,relwidth=0.5)
+
+buttonB = tk.Button(windowA, text="Inicar sesión")
+buttonB.place(relx=0.25,rely=0.7,relwidth=0.5)
+
+windowA.mainloop()  # Permite mantener en siclo el programa
