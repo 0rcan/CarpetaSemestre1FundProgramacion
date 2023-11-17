@@ -48,3 +48,4 @@ buttonB = tk.Button(windowA, text="Inicar sesión")
 buttonB.place(relx=0.25, rely=0.7, relwidth=0.5)
 
 windowA.mainloop()  # Permite mantener en siclo el programa
+# josue
