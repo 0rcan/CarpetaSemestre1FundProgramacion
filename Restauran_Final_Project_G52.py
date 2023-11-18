@@ -1,6 +1,5 @@
 # JOSUE JACINTO ZAMBRANO LOAIZA 2380741-3743
 # JESUS ALERTO TUNUBALA DAGUA 2379924-3743
-# Integrante2: PrimerNombre SegundoApellido – código2
 # Integrante2: PrimerNombre SegundoApellido – código3
 #
 # Docente: Luis Germán Toro Pareja
@@ -40,7 +39,7 @@ textB.configure(bg="#5F25B4", fg="#ffffff")
 textB.place(relx=0.16, rely=0.2, relheight=0.3, relwidth=0.7)
 
 
-buttonA = tk.Button(windowA, text="Registrarse")  # boton
+buttonA = tk.Button(windowA, text="Registrarse")
 buttonA.place(relx=0.25, rely=0.6, relwidth=0.5)
 ##buttonA.config(round)
 
@@ -48,4 +47,3 @@ buttonB = tk.Button(windowA, text="Inicar sesión")
 buttonB.place(relx=0.25, rely=0.7, relwidth=0.5)
 
 windowA.mainloop()  # Permite mantener en siclo el programa
-# josue
