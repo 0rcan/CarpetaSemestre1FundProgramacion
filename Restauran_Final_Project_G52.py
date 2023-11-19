@@ -6,10 +6,10 @@
 # Número de grupo: 52
 # Proyecto Final restaurante
 
-import tkinter as tk
+import tkinter as tk # Importamos la libreria
 
+#   VENTANA #1
 # def menu_r():
-
 # Creacion de la Ventana
 windowA = tk.Tk()
 windowA.geometry("500x500")
@@ -30,7 +30,7 @@ textA.place(
 
 textB = tk.Label(
     windowA,
-    text="""Nuestro restaurante es un lugar donde ofrecemos una variedad 
+    text="""Nuestro restaurante es un lugar donde ofrecemos una variedad
 de platos deliciosos y recursos culinarios para el público para 
 satisfacer tus necesidades culinarias y hacerte 
 disfrutar de una experiencia gastronómica exepcional.""",
@@ -47,3 +47,6 @@ buttonB = tk.Button(windowA, text="Inicar sesión")
 buttonB.place(relx=0.25, rely=0.7, relwidth=0.5)
 
 windowA.mainloop()  # Permite mantener en siclo el programa
+
+#   VENTANA #2
+
