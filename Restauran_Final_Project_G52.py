@@ -54,117 +54,187 @@ window_home.mainloop()  # Permite mantener en siclo el programa
 
 # ====================================VENTANA #2====================================
 
-# Creación ventana
+# Creación de ventana
 window_register = tk.Tk()
 window_register.geometry("500x500")
-window_register.title("Registrarse")
+window_register.title("Mi Restaurante")
 
-# Contenedor A
-container_registerA = tk.Frame(window_register)
-container_registerA.grid(row=0,column=0)
+# Botones menu
+container_button_register = tk.Frame(window_register)
+container_button_register.grid(row=0, column=0)
 
-# Botones menú
-button_registerA = tk.Button( 
-    container_registerA, text="Inicio" # Boton inicio
-    )
-button_registerA.grid(row=0,column=1)
+button_registerA = tk.Button(
+    container_button_register, text="Inicio", width=8, height=1)
+button_registerA.grid(row=0, column=1)
 button_registerB = tk.Button(
-    container_registerA, text="Registro" # Boton registro
-    )
-button_registerB.grid(row=0,column=2)
+    container_button_register, text="Inicio sesión", width=15, height=1)
+button_registerB.grid(row=0, column=2)
 
-# Contenedor B
-container_registerB = tk.Frame(window_register)
-container_registerB.grid(row=1,column=2,padx=80)
-container_registerB.config(bg="#000000")
+# boton invisiblle
+# line_register = tk.Label(
+#     window_register, text="", width=28, bd=2, relief="solid"
+# )
 
-# Titulo
-text_register = tk.Label(container_registerB, text="Mi Restaurante")
-text_register.configure(font=("arial", 17))  # Estilos del texto
-text_register.grid(row=0,column=0)
+# line_register.grid(row=0, columnspan=3)
 
-# Logo
-# # Cargar imagen
-# imagen_home = Image.open("restaurante.png")
-# # Tamaño
-# imagen_home = image_home.resize((100, 100), Image.ANTIALIAS)
+# Contenedor principal
+main_container_register = tk.Frame(window_register)
+main_container_register.grid(row=1, column=1)
 
-# # Convertir la imagen de PIL a una imagen de Tkinter
+# Sub contenedor dentro del contenedor principal
+sub_container_register = tk.Frame(main_container_register)
 
-# imagen_tk = ImageTk.PhotoImage(imagen_home)
+sub_container_register.grid(row=2, column=0, pady=30)
+fuente_negrita = ("Arial", 13, "bold")
+fuente_in = ("Arial", 13, "bold")
+sub_container_register.configure(bg="gray")
 
-# # Agregar la imagen a un widget de etiqueta
-# panel = tk.Label(window_register, image=imagen_home)
-# panel.grid(row=1, column=0)
+# Contenedores de relleno a los lados del principal
+texiz = tk.Label(
+    sub_container_register, text="", font=fuente_in, bd=2, width=5, height=1
+)
+texiz.configure(bg="gray", fg="white")
+texiz.grid(row=0, column=0)
+
+texde = tk.Label(
+    sub_container_register, text="", font=fuente_in, bd=2, width=5, height=1
+)
+texde.configure(bg="gray", fg="white")
+texde.grid(row=0, column=2)
+
+# Titulo y logo
+
+tittle_register = tk.Label(
+    main_container_register, text="Mi Restaurante"
+)
+tittle_register.configure(font=fuente_negrita)  # Estilos del texto
+# Imprime el elemento con determinada posición
+tittle_register.grid(row=0, column=0)
+
+image_home = tk.PhotoImage(file="restaurante.png")
+image_home = image_home.subsample(10)  # Tamaño de la imagen
+lbl_image_home = tk.Label(main_container_register, image=image_home).grid(
+    row=1, column=0
+)
+
+# Entradas de inicio de sesión
 
 # Registrarse
-email_register = tk.Label(container_registerB, text="Email")
+email_register = tk.Label(sub_container_register, text="Email")
 email_register.configure(bg="#5E5C6C", fg="#ffffff")
-email_register.grid(row=2,column=0)
+email_register.grid(row=2, column=0)
 
-email_entry_register = tk.Entry(container_registerB)
-email_entry_register.grid(row=3,column=0)
+email_entry_register = tk.Entry(sub_container_register)
+email_entry_register.grid(row=3, column=0)
 
-password_register = tk.Label(container_registerB, text="Contraseña")
+password_register = tk.Label(sub_container_register, text="Contraseña")
 password_register.configure(bg="#5E5C6C", fg="#ffffff")
-password_register.grid(row=4,column=0)
+password_register.grid(row=4, column=0)
 
-password_entry_register = tk.Entry(container_registerB, show="*")
-password_entry_register.grid(row=5,column=0)
+password_entry_register = tk.Entry(sub_container_register, show="*")
+password_entry_register.grid(row=5, column=0)
 
-confirm_register = tk.Label(container_registerB, text="Contraseña")
+confirm_register = tk.Label(sub_container_register, text="Contraseña")
 confirm_register.configure(bg="#5E5C6C", fg="#ffffff")
-confirm_register.grid(row=6,column=0) 
+confirm_register.grid(row=6, column=0)
 
-confirm_entry_register = tk.Entry(container_registerB, show="*")
-confirm_entry_register.grid(row=7,column=0)
+confirm_entry_register = tk.Entry(sub_container_register, show="*")
+confirm_entry_register.grid(row=7, column=0)
 
 # Boton registrar
 button_registerC = tk.Button(
-    container_registerB, text="Registrar" # Boton registro
-    )
-button_registerC.grid(row=8,column=0)
+    sub_container_register, text="Registrar"  # Boton registro
+)
+button_registerC.grid(row=8, column=0)
+
 
 window_register.mainloop()  # Permite mantener en siclo el programa
 
 
 # ====================================VENTANA #3====================================
+
 window_log_in = tk.Tk()
 window_log_in.geometry("500x500")
 window_log_in.title("Mi Restaurante")
 
-# Botones menú
-button_logA = tk.Button(window_log_in, text="Inicio")
-button_logA.place(x=0, y=0, relwidth=0.1)
-button_logB = tk.Button(window_log_in, text="Inicio sesión")
-button_logB.place(x=50, y=0, relwidth=0.2)
+# Botones menu
+framebutto = tk.Frame(window_log_in)
+# framebutto.config(bd=1)
+framebutto.grid(row=0, column=0)
 
-textA = tk.Label(window_log_in, text="Mi Restaurante")
-textA.configure(font=("arial", 17))  # Estilos del texto
-textA.place(
-    relx=0.25, rely=0.1, relwidth=0.2
-)  # Imprime el elemento con determinada posición
+butto_log = tk.Button(framebutto, text="Inicio", width=8, height=1)
+butto_log.grid(row=0, column=1)
+button_logB = tk.Button(framebutto, text="Inicio sesión", width=15, height=1)
+button_logB.grid(row=0, column=2)
+# boton invisiblle
+# label_muerto = tk.Label(
+#     window_log_in, text="", width=23, height=1, bd=2, relief="solid"
+# )
+
+# label_muerto.grid(row=0, column=2)
+
+frame1 = tk.Frame(window_log_in)
+frame1.grid(row=1, column=1)
+
+
+framegris = tk.Frame(frame1)
+
+framegris.grid(row=2, column=0, pady=30)
+fuente_negrita = ("Arial", 13, "bold")
+fuente_in = ("Arial", 13, "bold")
+bg = "gray"
+framegris.configure(bg=bg)
+textA = tk.Label(frame1, text="Mi Restaurante")
+textA.configure(font=fuente_negrita)  # Estilos del texto
+textA.grid(row=0, column=0)  # Imprime el elemento con determinada posición
 
 image_home = tk.PhotoImage(file="restaurante.png")
 image_home = image_home.subsample(10)  # Tamaño de la imagen
-lbl_image_home = tk.Label(image=image_home).place(
-    relx=0.50, rely=0.17, anchor="center"
+lbl_image_home = tk.Label(frame1, image=image_home).grid(
+    row=1, column=0
 )  # Posicionamiento
 
 # Entradas de inicio de sesión
-textB = tk.Label(window_log_in, text="""Inicio Sesión""")
-textB.configure(bg="#5E5C6C", fg="#ffffff")
-textB.place(relx=0.15, rely=0.2, relheight=0.3, relwidth=0.7)
 
-textE = tk.Label(window_log_in, text="Email")
-textE.configure(bg="#5E5C6C", fg="#ffffff")
-textE.place(relx=0.15, rely=0.4, relheight=0.1, relwidth=0.50)
 
-aentry = tk.Entry(window_log_in)
-aentry.place(relx=0.35, rely=0.5)
+texiz = tk.Label(
+    framegris, text="", font=fuente_in, bd=2, width=5, height=1
+)
+texiz.configure(bg=bg, fg="white")
+texiz.grid(row=0, column=0)
 
-textC = tk.Label(window_log_in, text="Contraseña")
-textC.configure(bg="#5E5C6C", fg="#ffffff")
-textC.place(relx=0.15, rely=0.6, relheight=0.1, relwidth=0.50)
+texde = tk.Label(
+    framegris, text="", font=fuente_in, bd=2, width=5, height=1
+)
+texde.configure(bg=bg, fg="white")
+texde.grid(row=0, column=2)
+
+textB = tk.Label(
+    framegris, text="""Inicio Sesión""", font=fuente_negrita
+)
+textB.configure(bg=bg, fg="#ffffff")
+textB.grid(row=0, column=1)
+
+
+textE = tk.Label(framegris, text="Email", font=fuente_negrita)
+textE.configure(bg=bg, fg="#ffffff")
+textE.grid(row=1, column=1)
+
+aentry = tk.Entry(framegris)
+aentry.grid(row=2, column=1)
+
+textC = tk.Label(framegris, text="Contraseña", font=fuente_negrita)
+textC.configure(bg=bg, fg="#ffffff")
+textC.grid(row=3, column=1)
+
+bentry = tk.Entry(framegris)
+bentry.grid(row=4, column=1)
+
+button_logC = tk.Button(
+    framegris, text="Iniciar sesión",
+    font=fuente_negrita, bg="gray", width=10, height=1
+)
+button_logC.configure(fg="white")
+button_logC.grid(row=5, column=1, pady=30)
 
 window_log_in.mainloop()  # Permite mantener en siclo
