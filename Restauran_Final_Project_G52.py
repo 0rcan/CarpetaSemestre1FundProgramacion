@@ -84,36 +84,26 @@ main_container_register.grid(row=1, column=1)
 # Sub contenedor dentro del contenedor principal
 sub_container_register = tk.Frame(main_container_register)
 
-sub_container_register.grid(row=2, column=0, pady=30)
+sub_container_register.grid(row=0, column=1, pady=30)
 fuente_negrita = ("Arial", 13, "bold")
 fuente_in = ("Arial", 13, "bold")
-sub_container_register.configure(bg="gray")
-
-# Contenedores de relleno a los lados del principal
-texiz = tk.Label(
-    sub_container_register, text="", font=fuente_in, bd=2, width=5, height=1
-)
-texiz.configure(bg="gray", fg="white")
-texiz.grid(row=0, column=0)
-
-texde = tk.Label(
-    sub_container_register, text="", font=fuente_in, bd=2, width=5, height=1
-)
-texde.configure(bg="gray", fg="white")
-texde.grid(row=0, column=2)
+sub_container_register.configure(bg="#5E5C6C",padx=50)
 
 # Titulo y logo
 
 tittle_register = tk.Label(
-    main_container_register, text="Mi Restaurante"
+    sub_container_register, text="Mi Restaurante"
 )
+tittle_register.configure(bg="#5E5C6C",fg="#ffffff")
 tittle_register.configure(font=fuente_negrita)  # Estilos del texto
 # Imprime el elemento con determinada posición
 tittle_register.grid(row=0, column=0)
 
 image_home = tk.PhotoImage(file="restaurante.png")
 image_home = image_home.subsample(10)  # Tamaño de la imagen
-lbl_image_home = tk.Label(main_container_register, image=image_home).grid(
+lbl_image_home = tk.Label(
+    sub_container_register, image=image_home
+).grid(
     row=1, column=0
 )
 
@@ -145,8 +135,7 @@ confirm_entry_register.grid(row=7, column=0)
 button_registerC = tk.Button(
     sub_container_register, text="Registrar"  # Boton registro
 )
-button_registerC.grid(row=8, column=0)
-
+button_registerC.grid(row=8, column=0,pady=10)
 
 window_register.mainloop()  # Permite mantener en siclo el programa
 
@@ -195,7 +184,6 @@ lbl_image_home = tk.Label(frame1, image=image_home).grid(
 )  # Posicionamiento
 
 # Entradas de inicio de sesión
-
 
 texiz = tk.Label(
     framegris, text="", font=fuente_in, bd=2, width=5, height=1
