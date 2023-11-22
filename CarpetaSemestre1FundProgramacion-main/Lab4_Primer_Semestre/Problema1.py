@@ -66,7 +66,7 @@ def census():  # Función
 
 
 if __name__ == "__main__":  # Entry point
-    line = "="*10
+    line = "="*10 # Variable con 10 =
     print(f"\n {line}BIENVENIDO AL CENSO VIRTUAL{line}\n")
     print(f" {line}JEFE DE HOGAR{line}\n")
     while True:  # Siclo
