@@ -7,7 +7,7 @@
 # Proyecto Final restaurante
 
 import tkinter as tk  # Importamos la libreria
-from PIL import ImageTk, Image
+
 # ====================================VENTANA #1====================================
 
 # def menu_r():
@@ -16,38 +16,46 @@ window_home = tk.Tk()
 window_home.geometry("500x500")
 window_home.title("Mi Restaurante")
 
+container_main_home = tk.Frame(window_home)
+container_main_home.grid(row=0, column=0,padx=80)
+
+# Titulo
+text_home = tk.Label(container_main_home, text="Mi Restaurante")
+text_home.configure(font=("arial", 17))  # Estilos del texto
+text_home.grid(
+    row=1, column=1, # Imprime el elemento con determinada posición
+)
+
 # Imagen/Logo
 image_home = tk.PhotoImage(file="restaurante.png")
 image_home = image_home.subsample(10)  # Tamaño de la imagen
-lbl_image_home = tk.Label(image=image_home).place(
-    relx=0.50, rely=0.17, anchor="center"  # Posicionamiento
-)
-
-# Titulo
-text_home = tk.Label(window_home, text="Mi Restaurante")
-text_home.configure(font=("arial", 17))  # Estilos del texto
-text_home.place(
-    relx=0.35, rely=0.05  # Imprime el elemento con determinada posición
+lbl_image_home = tk.Label(container_main_home,image=image_home).grid(
+    row=2, column=1,pady=5 # Posicionamiento
 )
 
 # Descripción del restaurante
-text_home = tk.Label(window_home, text="""
+text_home = tk.Label(container_main_home, text="""
 Nuestro restaurante es un lugar donde ofrecemos una variedad
-de platos deliciosos y recursos culinarios para el público para 
+de platos deliciosos y recursos culinarios para el público para
 satisfacer tus necesidades culinarias y hacerte 
 disfrutar de una experiencia gastronómica exepcional.
 """)
+
 # Estilos de la descripción
 text_home.configure(bg="#5E5C6C", fg="#ffffff")
-text_home.place(relx=0.16, rely=0.25, relheight=0.3, relwidth=0.7)
+text_home.grid(row=3, column=1)
 
 # Botones registrarse
-button_home = tk.Button(window_home, text="Registrarse")
-button_home.place(relx=0.25, rely=0.6, relwidth=0.5)
+button_home = tk.Button(
+    container_main_home, text="Registrarse",bg="gray",fg="#ffffff"
+    )
+button_home.grid(row=4, column=1,pady=8)
 
 # Botones iniciar sesión
-button_home = tk.Button(window_home, text="Inicar sesión")
-button_home.place(relx=0.25, rely=0.7, relwidth=0.5)
+button_home = tk.Button(
+    container_main_home, text="Inicar sesión",bg="gray",fg="#ffffff"
+    )
+button_home.grid(row=5, column=1,)
 
 window_home.mainloop()  # Permite mantener en siclo el programa
 
@@ -67,15 +75,8 @@ button_registerA = tk.Button(
     container_button_register, text="Inicio", width=8, height=1)
 button_registerA.grid(row=0, column=1)
 button_registerB = tk.Button(
-    container_button_register, text="Inicio sesión", width=15, height=1)
+    container_button_register, text="Inicio sesión", width=9, height=1)
 button_registerB.grid(row=0, column=2)
-
-# boton invisiblle
-# line_register = tk.Label(
-#     window_register, text="", width=28, bd=2, relief="solid"
-# )
-
-# line_register.grid(row=0, columnspan=3)
 
 # Contenedor principal
 main_container_register = tk.Frame(window_register)
@@ -94,8 +95,10 @@ sub_container_register.configure(bg="#5E5C6C",padx=50)
 tittle_register = tk.Label(
     sub_container_register, text="Mi Restaurante"
 )
-tittle_register.configure(bg="#5E5C6C",fg="#ffffff")
-tittle_register.configure(font=fuente_negrita)  # Estilos del texto
+
+tittle_register.configure(
+    bg="#5E5C6C",font=fuente_negrita,fg="#ffffff"  # Estilos del texto
+    ) 
 # Imprime el elemento con determinada posición
 tittle_register.grid(row=0, column=0)
 
@@ -104,20 +107,21 @@ image_home = image_home.subsample(10)  # Tamaño de la imagen
 lbl_image_home = tk.Label(
     sub_container_register, image=image_home
 ).grid(
-    row=1, column=0
+    row=1, column=0,pady=5
 )
 
 # Entradas de inicio de sesión
-
 # Registrarse
 email_register = tk.Label(sub_container_register, text="Email")
 email_register.configure(bg="#5E5C6C", fg="#ffffff")
-email_register.grid(row=2, column=0)
+email_register.grid(row=2, column=0, pady=3)
 
 email_entry_register = tk.Entry(sub_container_register)
 email_entry_register.grid(row=3, column=0)
 
-password_register = tk.Label(sub_container_register, text="Contraseña")
+password_register = tk.Label(
+    sub_container_register, text="Contraseña"
+    )
 password_register.configure(bg="#5E5C6C", fg="#ffffff")
 password_register.grid(row=4, column=0)
 
@@ -133,12 +137,11 @@ confirm_entry_register.grid(row=7, column=0)
 
 # Boton registrar
 button_registerC = tk.Button(
-    sub_container_register, text="Registrar"  # Boton registro
+    sub_container_register, text="Registrar",bg="gray",fg="#ffffff" # Boton registro
 )
 button_registerC.grid(row=8, column=0,pady=10)
 
 window_register.mainloop()  # Permite mantener en siclo el programa
-
 
 # ====================================VENTANA #3====================================
 
@@ -153,7 +156,9 @@ framebutto.grid(row=0, column=0)
 
 butto_log = tk.Button(framebutto, text="Inicio", width=8, height=1)
 butto_log.grid(row=0, column=1)
-button_logB = tk.Button(framebutto, text="Inicio sesión", width=15, height=1)
+button_logB = tk.Button(
+    framebutto, text="Inicio sesión", width=9, height=1
+    )
 button_logB.grid(row=0, column=2)
 # boton invisiblle
 # label_muerto = tk.Label(
@@ -171,7 +176,7 @@ framegris = tk.Frame(frame1)
 framegris.grid(row=2, column=0, pady=30)
 fuente_negrita = ("Arial", 13, "bold")
 fuente_in = ("Arial", 13, "bold")
-bg = "gray"
+bg = "#5E5C6C"
 framegris.configure(bg=bg)
 textA = tk.Label(frame1, text="Mi Restaurante")
 textA.configure(font=fuente_negrita)  # Estilos del texto
@@ -226,3 +231,8 @@ button_logC.configure(fg="white")
 button_logC.grid(row=5, column=1, pady=30)
 
 window_log_in.mainloop()  # Permite mantener en siclo
+
+# ====================================VENTANA #4====================================
+
+# ====================================VENTANA #5====================================
+
