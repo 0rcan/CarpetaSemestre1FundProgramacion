@@ -16,6 +16,7 @@ window_home = tk.Tk()
 window_home.geometry("500x500")
 window_home.title("Mi Restaurante")
 
+# Contenedor principal
 container_main_home = tk.Frame(window_home)
 container_main_home.grid(row=0, column=0,padx=80)
 
@@ -67,19 +68,16 @@ window_register = tk.Tk()
 window_register.geometry("500x500")
 window_register.title("Registrarse")
 
-# Botones menu
-container_button_register = tk.Frame(window_register)
-container_button_register.grid(row=0, column=0)
-
-button_registerA = tk.Button(
-    container_button_register, text="Inicio", width=8, height=1)
-button_registerA.grid(row=0, column=1)
-button_registerB = tk.Button(
-    container_button_register, text="Inicio sesión", width=9, height=1)
-button_registerB.grid(row=0, column=2)
+# Pestañas
+eyelashes_register = ttk.Notebook(window_register)
+eyelashes_register.grid(row=0,column=0)
+eyelashes_registerA = ttk.Frame(eyelashes_register,padding=125)
+eyelashes_registerB = ttk.Frame(eyelashes_register,padding=125)
+eyelashes_register.add(eyelashes_registerA,text="Inicio")
+eyelashes_register.add(eyelashes_registerB,text="Registro")
 
 # Contenedor principal
-main_container_register = tk.Frame(window_register)
+main_container_register = tk.Frame(eyelashes_registerA)
 main_container_register.grid(row=1, column=1)
 
 # Titulo y logo
@@ -94,10 +92,10 @@ tittle_register.configure(
 # Imprime el elemento con determinada posición
 tittle_register.grid(row=0, column=0)
 
-image_home = tk.PhotoImage(file="restaurante.png")
-image_home = image_home.subsample(10)  # Tamaño de la imagen
-lbl_image_home = tk.Label(
-    main_container_register, image=image_home
+image_homeA = tk.PhotoImage(file="restaurante.png")
+image_homeA = image_homeA.subsample(10)  # Tamaño de la imagen
+lbl_image_homeA = tk.Label(
+    main_container_register, image=image_homeA
 ).grid(
     row=1, column=0,pady=5
 )
@@ -109,6 +107,13 @@ sub_container_register.grid(row=2, column=0, pady=15)
 fuente_negrita = ("Arial", 13, "bold")
 sub_container_register.configure(bg="#5E5C6C",padx=50)
 
+# Titulo registrarse
+text_register = tk.Label(
+    sub_container_register, text="Registrarse", font=(
+        "fuente_negrita",16
+    ),bg="#5E5C6C",fg="#ffffff"
+)
+text_register.grid(row=1,column=0)
 
 # Entradas de inicio de sesión
 # Registrarse
@@ -149,53 +154,32 @@ button_registerC = tk.Button(
 )
 button_registerC.grid(row=8, column=0,pady=10)
 
-window_register.mainloop()  # Permite mantener en siclo el programa
 
 # ====================================VENTANA #3====================================
 
-window_log_in = tk.Tk()
-window_log_in.geometry("500x500")
-window_log_in.title("Iniciar sección")
+# Se enlaza el reguistro a la pestaña
 
-# Botones menu
-framebutto = tk.Frame(window_log_in)
-# framebutto.config(bd=1)
-framebutto.grid(row=0, column=0)
-
-butto_log = tk.Button(framebutto, text="Inicio", width=8, height=1)
-butto_log.grid(row=0, column=1)
-button_logB = tk.Button(
-    framebutto, text="Inicio sesión", width=9, height=1
-    )
-button_logB.grid(row=0, column=2)
-# boton invisiblle
-# label_muerto = tk.Label(
-#     window_log_in, text="", width=23, height=1, bd=2, relief="solid"
-# )
-
-# label_muerto.grid(row=0, column=2)
-
-frame1 = tk.Frame(window_log_in)
+frame1 = tk.Frame(eyelashes_registerB)
 frame1.grid(row=1, column=1)
 
 
 framegris = tk.Frame(frame1)
 
-framegris.grid(row=2, column=0, pady=30)
+framegris.grid(row=2, column=0, pady=15)
 fuente_negrita = ("Arial", 13, "bold")
 fuente_in = ("Arial", 13, "bold")
 bg = "#5E5C6C"
-framegris.configure(bg=bg)
+framegris.configure(bg=bg,padx=11)
 textA = tk.Label(
     frame1, text="Mi Restaurante"
     )
 textA.configure(font=("fuente_negrita",20))  # Estilos del texto
 textA.grid(row=0, column=0)  # Imprime el elemento con determinada posición
 
-image_home = tk.PhotoImage(file="restaurante.png")
-image_home = image_home.subsample(10)  # Tamaño de la imagen
-lbl_image_home = tk.Label(frame1, image=image_home).grid(
-    row=1, column=0
+image_homeB = tk.PhotoImage(file="restaurante.png")
+image_homeB = image_homeB.subsample(10)  # Tamaño de la imagen
+lbl_image_homeB = tk.Label(frame1, image=image_homeB).grid(
+    row=1, column=0,pady=5
 )  # Posicionamiento
 
 # Entradas de inicio de sesión
@@ -242,7 +226,7 @@ button_logC = tk.Button(
 button_logC.configure(fg="white")
 button_logC.grid(row=5, column=1, pady=20)
 
-window_log_in.mainloop()  # Permite mantener en siclo
+window_register.mainloop()  # Permite mantener en siclo el programa
 
 # ====================================VENTANA #4====================================
 
@@ -271,7 +255,7 @@ button_dishesC.grid(row=0, column=3)
 
 # Contenedor principal
 main_container_dishes = tk.Frame(window_dishes)
-main_container_dishes.grid(row=1, column=1)
+main_container_dishes.grid(row=1, column=0)
 
 # Titulo y logo
 tittle_dishes = tk.Label(
@@ -321,3 +305,5 @@ button_dishesF = tk.Button(
 button_dishesF.grid(row=6, column=0,pady=10)
 
 window_dishes.mainloop()  # Permite mantener en siclo el programa
+
+# ====================================VENTANA #6====================================

@@ -6,13 +6,10 @@ window_dishes = tk.Tk()
 window_dishes.geometry("500x500")
 window_dishes.title("Gestión de platos")
 
-# Botones menu
-container_button_dishes = tk.Frame(window_dishes)
-container_button_dishes.grid(row=0, column=0)
-
+# Pestañas
 pestañas = ttk.Notebook(window_dishes)
 pestañas.grid(row=0,column=0)
-pestaña1 = ttk.Frame(pestañas,width=500,height=500)
+pestaña1 = ttk.Frame(pestañas,padding=125)
 pestaña3 = ttk.Frame(pestañas)
 pestañas.add(pestaña1,text="Titulo")
 pestañas.add(pestaña3,text="Titulo2")
