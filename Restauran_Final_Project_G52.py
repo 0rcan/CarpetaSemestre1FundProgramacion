@@ -13,8 +13,12 @@ from tkinter import ttk
 # def menu_r():
 # Creacion de la Ventana
 window_restaurant = tk.Tk()
-window_restaurant.geometry("500x500")
+window_restaurant.geometry("515x450")
+window_restaurant.resizable(False,False)
 window_restaurant.title("Mi Restaurante")
+
+# Obtener la info de la altura de la ventana
+height = window_restaurant.winfo_reqheight()
 
 # Pestañas
 eyelashes_registerA = ttk.Notebook(window_restaurant)
@@ -22,12 +26,12 @@ eyelashes_registerA.grid(row=0,column=0)
 
 # Enlazar pestañas a la pestañas base
 eyelashes_restaurant = ttk.Frame(eyelashes_registerA)
-eyelashes_registerB = ttk.Frame(eyelashes_registerA,padding=125)
-eyelashes_log_in = ttk.Frame(eyelashes_registerA,padding=125)
-eyelashes_menu = ttk.Frame(eyelashes_registerA,padding=125)
-eyelashes_dish_managrment = ttk.Frame(eyelashes_registerA,padding=125)
-eyelashes_table = ttk.Frame(eyelashes_registerA,padding=125)
-eyelashes_orders = ttk.Frame(eyelashes_registerA,padding=125)
+eyelashes_registerB = ttk.Frame(eyelashes_registerA)
+eyelashes_log_in = ttk.Frame(eyelashes_registerA,)
+eyelashes_menu = ttk.Frame(eyelashes_registerA)
+eyelashes_dish_managrment = ttk.Frame(eyelashes_registerA)
+eyelashes_table = ttk.Frame(eyelashes_registerA)
+eyelashes_orders = ttk.Frame(eyelashes_registerA)
 
 # Asignarle un nombre a cada pestaña
 eyelashes_registerA.add(eyelashes_restaurant,text="Inicio")
@@ -45,7 +49,7 @@ font_bold = ("Arial", 13, "bold")
 
 # Contenedor principal
 container_main_home = tk.Frame(eyelashes_restaurant)
-container_main_home.grid(row=0, column=0,padx=86,pady=125)
+container_main_home.grid(row=0, column=0,padx=86,pady=50)
 
 # Titulo
 text_home = tk.Label(container_main_home, text="Mi Restaurante")
@@ -70,18 +74,18 @@ disfrutar de una experiencia gastronómica exepcional.
 """)
 
 # Estilos de la descripción
-text_home.configure(bg="#5E5C6C", fg="#ffffff")
+text_home.configure(bg="#332c4b", fg="#ffffff")
 text_home.grid(row=3, column=1)
 
 # Botones registrarse
 button_home = tk.Button(
-    container_main_home, text="Registrarse",bg="gray",fg="#ffffff"
+    container_main_home, text="Registrarse",bg="#362d69",fg="#ffffff"
     )
 button_home.grid(row=4, column=1,pady=8)
 
 # Botones iniciar sesión
 button_home = tk.Button(
-    container_main_home, text="Inicar sesión",bg="gray",fg="#ffffff"
+    container_main_home, text="Inicar sesión",bg="#362d69",fg="#ffffff"
     )
 button_home.grid(row=5, column=1,)
 
@@ -89,7 +93,7 @@ button_home.grid(row=5, column=1,)
 
 # Contenedor principal
 main_container_register = tk.Frame(eyelashes_registerB)
-main_container_register.grid(row=1, column=1)
+main_container_register.grid(row=1, column=1,padx=125,pady=50)
 
 # Titulo y logo
 
@@ -115,13 +119,13 @@ lbl_image_homeA = tk.Label(
 sub_container_register = tk.Frame(main_container_register)
 
 sub_container_register.grid(row=2, column=0, pady=15)
-sub_container_register.configure(bg="#5E5C6C",padx=50)
+sub_container_register.configure(bg="#332c4b",padx=50)
 
 # Titulo registrarse
 text_register = tk.Label(
     sub_container_register, text="Registrarse", font=(
         "font_bold",16
-    ),bg="#5E5C6C",fg="#ffffff"
+    ),bg="#332c4b",fg="#ffffff"
 )
 text_register.grid(row=1,column=0)
 
@@ -129,7 +133,7 @@ text_register.grid(row=1,column=0)
 # Registrarse
 email_register = tk.Label(sub_container_register, text="Email")
 email_register.configure(
-    bg="#5E5C6C",fg="#ffffff",font=("font_bold",12)
+    bg="#332c4b",fg="#ffffff",font=("font_bold",12)
     )
 email_register.grid(row=2, column=0, pady=3)
 
@@ -140,7 +144,7 @@ password_register = tk.Label(
     sub_container_register, text="Contraseña"
     )
 password_register.configure(
-    bg="#5E5C6C", fg="#ffffff",font=("font_bold",12)
+    bg="#332c4b", fg="#ffffff",font=("font_bold",12)
     )
 password_register.grid(row=4, column=0)
 
@@ -151,7 +155,7 @@ confirm_register = tk.Label(
     sub_container_register, text="Confirmar Contraseña"
     )
 confirm_register.configure(
-    bg="#5E5C6C", fg="#ffffff", font=("font_bold",12)
+    bg="#332c4b", fg="#ffffff", font=("font_bold",12)
     )
 confirm_register.grid(row=6, column=0)
 
@@ -160,7 +164,7 @@ confirm_entry_register.grid(row=7, column=0)
 
 # Boton registrar
 button_register = tk.Button(
-    sub_container_register, text="Registrar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_register, text="Registrar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_register.grid(row=8, column=0,pady=10)
 
@@ -171,14 +175,14 @@ button_register.grid(row=8, column=0,pady=10)
 # Se enlaza el reguistro a la pestaña
 
 frame1 = tk.Frame(eyelashes_log_in)
-frame1.grid(row=1, column=1)
+frame1.grid(row=1, column=1,padx=125,pady=50)
 
 frame_gray = tk.Frame(frame1)
 
 frame_gray.grid(row=2, column=0, pady=15)
 source_in = ("Arial", 13, "bold")
-bg = "#5E5C6C"
-frame_gray.configure(bg=bg, padx=11)
+
+frame_gray.configure(bg="#332c4b", padx=11)
 textA = tk.Label(frame1, text="Mi Restaurante")
 textA.configure(font=("font_bold", 20))  # Estilos del texto
 textA.grid(row=0, column=0)  # Imprime el elemento con determinada posición
@@ -192,32 +196,32 @@ lbl_image_homeB = tk.Label(frame1, image=image_homeB).grid(
 # Entradas de inicio de sesión
 
 texiz = tk.Label(frame_gray, text="", font=source_in, bd=2, width=5, height=1)
-texiz.configure(bg=bg, fg="white")
+texiz.configure(bg="#332c4b", fg="white")
 texiz.grid(row=0, column=0)
 
 texde = tk.Label(frame_gray, text="", font=source_in, bd=2, width=5, height=1)
-texde.configure(bg=bg, fg="white")
+texde.configure(bg="#332c4b", fg="white")
 texde.grid(row=0, column=2)
 
 textB = tk.Label(frame_gray, text="""Inicio Sesión""", font=("font_bold", 16))
-textB.configure(bg=bg, fg="#ffffff")
+textB.configure(bg="#332c4b", fg="#ffffff")
 textB.grid(row=0, column=1)
 
 textE = tk.Label(frame_gray, text="Email", font=("font_bold", 12))
-textE.configure(bg=bg, fg="#ffffff")
+textE.configure(bg="#332c4b", fg="#ffffff")
 textE.grid(row=1, column=1)
 
 aentry = tk.Entry(frame_gray)
 aentry.grid(row=2, column=1)
 
 textC = tk.Label(frame_gray, text="Contraseña", font=("font_bold", 12))
-textC.configure(bg=bg, fg="#ffffff")
+textC.configure(bg="#332c4b", fg="#ffffff")
 textC.grid(row=3, column=1)
 
 bentry = tk.Entry(frame_gray)
 bentry.grid(row=4, column=1)
 
-button_logC = tk.Button(frame_gray, text="Iniciar sesión", bg="gray", width=10, height=1)
+button_logC = tk.Button(frame_gray, text="Iniciar sesión", bg="#362d69", width=10, height=1)
 button_logC.configure(fg="white")
 button_logC.grid(row=5, column=1, pady=20)
 
@@ -225,7 +229,7 @@ button_logC.grid(row=5, column=1, pady=20)
 
 # Contenedor principal
 main_container_menu = tk.Frame(eyelashes_menu)
-main_container_menu.grid(row=0, column=0)
+main_container_menu.grid(row=0, column=0,padx=125,pady=50)
 
 # Titulo y logo
 tittle_dishes = tk.Label(
@@ -237,10 +241,10 @@ tittle_dishes.configure(
 # Imprime el elemento con determinada posición
 tittle_dishes.grid(row=0, column=0)
 # Logo
-image_homeE = tk.PhotoImage(file="restaurante.png")
-image_homeE = image_homeE.subsample(10)  # Tamaño de la imagen
-lbl_image_homeD = tk.Label(
-    main_container_menu, image=image_homeE
+image_homeC = tk.PhotoImage(file="restaurante.png")
+image_homeC = image_homeC.subsample(10)  # Tamaño de la imagen
+lbl_image_homeC = tk.Label(
+    main_container_menu, image=image_homeC
 ).grid(
     row=2, column=0,pady=5
 )
@@ -249,32 +253,32 @@ lbl_image_homeD = tk.Label(
 sub_container_menu = tk.Frame(main_container_menu)
 
 sub_container_menu.grid(row=3, column=0, pady=15)
-sub_container_menu.configure(bg="#5E5C6C",padx=74)
+sub_container_menu.configure(bg="#332c4b",padx=74)
 
 # titulo de botones
 text_menu = tk.Label(
     sub_container_menu, text="Bienvenido",font=(
         "font_bold",14
-        ),bg="#5E5C6C",fg="#ffffff"
+        ),bg="#332c4b",fg="#ffffff"
     )
 text_menu.grid(row=3, column=0)
 
-# Botones gestión de platos
+# Botones gestión
 button_menuA = tk.Button(
-    sub_container_menu, text="Gestión de platos",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_menu, text="Gestión de platos",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_menuA.grid(row=4, column=0,pady=10)
 button_menuB = tk.Button(
-    sub_container_menu, text="Gestión de mesas",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_menu, text="Gestión de mesas",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_menuB.grid(row=5, column=0)
 button_menuC = tk.Button(
     sub_container_menu, text="Gestión de pedidos",
-    bg="gray",fg="#ffffff" # Boton registro
+    bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_menuC.grid(row=6, column=0,pady=10)
 button_menuD = tk.Button(
-    sub_container_menu, text="Cerrar sesión",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_menu, text="Cerrar sesión",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_menuD.grid(row=7, column=0,pady=10)
 
@@ -282,7 +286,7 @@ button_menuD.grid(row=7, column=0,pady=10)
 
 # Contenedor principal
 main_container_dishes = tk.Frame(eyelashes_dish_managrment)
-main_container_dishes.grid(row=0, column=0)
+main_container_dishes.grid(row=0, column=0,padx=125,pady=50)
 
 # Titulo y logo
 tittle_dishes = tk.Label(
@@ -306,27 +310,27 @@ lbl_image_homeD = tk.Label(
 sub_container_dishes = tk.Frame(main_container_dishes)
 
 sub_container_dishes.grid(row=3, column=0, pady=15)
-sub_container_dishes.configure(bg="#5E5C6C",padx=53)
+sub_container_dishes.configure(bg="#332c4b",padx=53)
 
 # titulo de botones
 text_dishes = tk.Label(
     sub_container_dishes, text="Gestión de platos",font=(
         "font_bold",14
-        ),bg="#5E5C6C",fg="#ffffff"
+        ),bg="#332c4b",fg="#ffffff"
     )
 text_dishes.grid(row=3, column=0)
 
 # Botones gestión de platos
 button_dishesA = tk.Button(
-    sub_container_dishes, text="Agregar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_dishes, text="Agregar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_dishesA.grid(row=4, column=0,pady=10)
 button_dishesB = tk.Button(
-    sub_container_dishes, text="Eliminar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_dishes, text="Eliminar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_dishesB.grid(row=5, column=0)
 button_dishesC = tk.Button(
-    sub_container_dishes, text="Actualizar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_dishes, text="Actualizar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_dishesC.grid(row=6, column=0,pady=10)
 # ====================================SUB-VENTANA Gestión de platos #2====================================
@@ -337,7 +341,7 @@ button_dishesC.grid(row=6, column=0,pady=10)
 
 # Contenedor principal
 main_container_table = tk.Frame(eyelashes_table)
-main_container_table.grid(row=0, column=0)
+main_container_table.grid(row=0, column=0,padx=125,pady=50)
 
 # Titulo y logo
 tittle_table = tk.Label(
@@ -349,10 +353,10 @@ tittle_table.configure(
 # Imprime el elemento con determinada posición
 tittle_table.grid(row=0, column=0)
 # Logo
-image_homeD = tk.PhotoImage(file="restaurante.png")
-image_homeD = image_homeD.subsample(10)  # Tamaño de la imagen
-lbl_image_homeD = tk.Label(
-    main_container_table, image=image_homeD
+image_homeE = tk.PhotoImage(file="restaurante.png")
+image_homeE = image_homeE.subsample(10)  # Tamaño de la imagen
+lbl_image_homeE = tk.Label(
+    main_container_table, image=image_homeE
 ).grid(
     row=2, column=0,pady=5
 )
@@ -361,27 +365,27 @@ lbl_image_homeD = tk.Label(
 sub_container_table = tk.Frame(main_container_table)
 
 sub_container_table.grid(row=3, column=0, pady=15)
-sub_container_table.configure(bg="#5E5C6C",padx=50)
+sub_container_table.configure(bg="#332c4b",padx=50)
 
 # titulo de botones
 text_table = tk.Label(
     sub_container_table, text="Gestión de mesas",font=(
         "font_bold",14
-        ),bg="#5E5C6C",fg="#ffffff"
+        ),bg="#332c4b",fg="#ffffff"
     )
 text_table.grid(row=3, column=0)
 
 # Botones gestión de platos
 button_tableA = tk.Button(
-    sub_container_table, text="Agregar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_table, text="Agregar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_tableA.grid(row=4, column=0,pady=10)
 button_tableB = tk.Button(
-    sub_container_table, text="Eliminar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_table, text="Eliminar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_tableB.grid(row=5, column=0)
 button_tableC = tk.Button(
-    sub_container_table, text="Actualizar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_table, text="Actualizar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_tableC.grid(row=6, column=0,pady=10)
 
@@ -389,7 +393,7 @@ button_tableC.grid(row=6, column=0,pady=10)
 
 # Contenedor principal
 main_container_orders = tk.Frame(eyelashes_orders)
-main_container_orders.grid(row=0, column=0)
+main_container_orders.grid(row=0, column=0,padx=125,pady=50)
 
 # Titulo y logo
 tittle_orders = tk.Label(
@@ -399,12 +403,12 @@ tittle_orders.configure(
     font=("font_bold",20)  # Estilos del texto
     ) 
 # Imprime el elemento con determinada posición
-tittle_table.grid(row=0, column=0)
+tittle_orders.grid(row=0, column=0)
 # Logo
-image_homeD = tk.PhotoImage(file="restaurante.png")
-image_homeD = image_homeD.subsample(10)  # Tamaño de la imagen
-lbl_image_homeD = tk.Label(
-    main_container_orders, image=image_homeD
+image_homeF = tk.PhotoImage(file="restaurante.png")
+image_homeF = image_homeF.subsample(10)  # Tamaño de la imagen
+lbl_image_homeF = tk.Label(
+    main_container_orders, image=image_homeF
 ).grid(
     row=2, column=0,pady=5
 )
@@ -413,27 +417,27 @@ lbl_image_homeD = tk.Label(
 sub_container_orders = tk.Frame(main_container_orders)
 
 sub_container_orders.grid(row=3, column=0, pady=15)
-sub_container_orders.configure(bg="#5E5C6C",padx=50)
+sub_container_orders.configure(bg="#332c4b",padx=44)
 
 # titulo de botones
 text_table = tk.Label(
     sub_container_orders, text="Gestión de pedidos",font=(
         "font_bold",14
-        ),bg="#5E5C6C",fg="#ffffff"
+        ),bg="#332c4b",fg="#ffffff"
     )
 text_table.grid(row=3, column=0)
 
 # Botones gestión de platos
 button_tableA = tk.Button(
-    sub_container_orders, text="Realizar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_orders, text="Realizar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_tableA.grid(row=4, column=0,pady=10)
 button_tableB = tk.Button(
-    sub_container_orders, text="Eliminar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_orders, text="Eliminar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_tableB.grid(row=5, column=0)
 button_tableC = tk.Button(
-    sub_container_orders, text="Actualizar",bg="gray",fg="#ffffff" # Boton registro
+    sub_container_orders, text="Actualizar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_tableC.grid(row=6, column=0,pady=10)
 
