@@ -176,10 +176,10 @@ tittle_dtableB.configure(
 # Imprime el elemento con determinada posición
 tittle_dtableB.grid(row=0, column=0)
 # Logo
-image_homeE = tk.PhotoImage(file="restaurante.png")
-image_homeE = image_homeE.subsample(10)  # Tamaño de la imagen
+image_homeF = tk.PhotoImage(file="restaurante.png")
+image_homeF = image_homeF.subsample(10)  # Tamaño de la imagen
 lbl_image_homeE = tk.Label(
-    main_container_tableB, image=image_homeE
+    main_container_tableB, image=image_homeF
 ).grid(
     row=2, column=0,pady=5
 )
