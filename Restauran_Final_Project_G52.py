@@ -282,8 +282,40 @@ button_menuD = tk.Button(
 )
 button_menuD.grid(row=7, column=0,pady=10)
 
-# ====================================VENTANA #5 Gestión de platos #1====================================
 
+# ====================================SUB-VENTANA Gestión de platos #2====================================
+
+def add():
+    main_container_dishes.destroy()
+    # Sub contenedor dentro del contenedor principal
+    main_container_dishes = tk.Frame(eyelashes_dish_managrment)
+    main_container_dishes.grid(row=0, column=0,padx=125,pady=50)
+
+    # titulo de botones
+    text_dishes = tk.Label(
+        main_container_dishes, text="Agregar de platos",font=(
+            "font_bold",14
+            ),bg="#332c4b",fg="#ffffff"
+        )
+    text_dishes.grid(row=3, column=0)
+
+    # Botones gestión de platos
+    entry_dishesA = tk.Entry(
+        main_container_dishes, text="Agregar",bg="#362d69",fg="#ffffff",command=add # Boton registro
+    )
+    entry_dishesA.grid(row=4, column=0,pady=10)
+    entry_dishesB = tk.Entry(
+        main_container_dishes, text="Eliminar",bg="#362d69",fg="#ffffff" # Boton registro
+    )
+    entry_dishesB.grid(row=5, column=0)
+    entry_dishesC = tk.Entry(
+        main_container_dishes, text="Actualizar",bg="#362d69",fg="#ffffff" # Boton registro
+    )
+    entry_dishesC.grid(row=6, column=0,pady=10)
+
+    
+# ====================================VENTANA #5 Gestión de platos #1====================================
+    
 # Contenedor principal
 main_container_dishes = tk.Frame(eyelashes_dish_managrment)
 main_container_dishes.grid(row=0, column=0,padx=125,pady=50)
@@ -322,7 +354,7 @@ text_dishes.grid(row=3, column=0)
 
 # Botones gestión de platos
 button_dishesA = tk.Button(
-    sub_container_dishes, text="Agregar",bg="#362d69",fg="#ffffff" # Boton registro
+    sub_container_dishes, text="Agregar",bg="#362d69",fg="#ffffff",command=add # Boton registro
 )
 button_dishesA.grid(row=4, column=0,pady=10)
 button_dishesB = tk.Button(
@@ -333,7 +365,7 @@ button_dishesC = tk.Button(
     sub_container_dishes, text="Actualizar",bg="#362d69",fg="#ffffff" # Boton registro
 )
 button_dishesC.grid(row=6, column=0,pady=10)
-# ====================================SUB-VENTANA Gestión de platos #2====================================
+
 
 # ====================================SUB-VENTANA Gestión de platos #3====================================
 
