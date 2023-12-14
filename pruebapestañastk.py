@@ -16,7 +16,6 @@ pestaña3 = ttk.Frame(pestañas)
 pestañas.add(pestaña1,text="Titulo")
 pestañas.add(pestaña3,text="Titulo3")
 
-
 #========================================================================
 #========================================================================
 #========================================================================
@@ -38,10 +37,9 @@ def x():
     # Imprime el elemento con determinada posición
     tittle_dishesB.grid(row=0, column=0)
     # Logo
-    image_homeE = tk.PhotoImage(file="restaurante.png")
-    image_homeE = image_homeE.subsample(10)  # Tamaño de la imagen
-    lbl_image_homeE = tk.Label(
-        main_container_dishesB, image=image_homeE
+
+    lbl_image_homeD = tk.Label(
+        main_container_dishesB, image=image_homeD
     ).grid(
         row=2, column=0,pady=5
     )
