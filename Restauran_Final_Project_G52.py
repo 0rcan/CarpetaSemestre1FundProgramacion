@@ -800,11 +800,11 @@ def management_orders():
 
         # Se insertan los datos en la tabla en el orden del teeeview
 
+        table_orders_dishes_do.insert('', 'end', values=('Plato1'))
         table_orders_dishes_do.insert('', 'end', values=('Plato2'))
         table_orders_dishes_do.insert('', 'end', values=('Plato3'))
         table_orders_dishes_do.insert('', 'end', values=('Plato4'))
         table_orders_dishes_do.insert('', 'end', values=('Plato5'))
-        table_orders_dishes_do.insert('', 'end', values=('Plato6'))
 
         style = ttk.Style()
         style.configure("Treeview", rowheight=30)  
@@ -937,7 +937,7 @@ if __name__ == "__main__":
 
     # Contenedor principal
     container_main_home = tk.Frame(eyelashes_restaurant)
-    container_main_home.grid(row=0, column=0,padx=86,pady=50)
+    container_main_home.grid(row=0, column=0,padx=80,pady=50)
 
     # Titulo
     text_home = tk.Label(container_main_home, text="Mi Restaurante")
@@ -978,7 +978,5 @@ if __name__ == "__main__":
         bg="#1aaadd",fg="#ffffff",command=log_in
         )
     button_home.grid(row=5, column=1,)
-
-
 
     window_restaurant.mainloop()  # Permite mantener en siclo el programa
