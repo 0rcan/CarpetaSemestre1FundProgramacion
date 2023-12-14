@@ -11,96 +11,99 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 
 
-def restaurant():
+
     # ====================================VENTANA #2====================================
-    def register():
-        # Enlazar pestañas a la pestañas base
-        eyelashes_registerB = ttk.Frame(eyelashes_registerA)
-        # Asignarle un nombre a cada pestaña
-        eyelashes_registerA.add(eyelashes_registerB,text="Registro")
-        # Contenedor principal
-        main_container_register = tk.Frame(eyelashes_registerB)
-        main_container_register.grid(row=1, column=1,padx=125,pady=50)
+def register():
+    # Enlazar pestañas a la pestañas base
+    eyelashes_registerB = ttk.Frame(eyelashes_registerA)
+    # Asignarle un nombre a cada pestaña
+    eyelashes_registerA.add(eyelashes_registerB,text="Registro")
+    
+    # Contenedor principal
+    main_container_register = tk.Frame(eyelashes_registerB)
+    main_container_register.grid(row=1, column=1,padx=125,pady=50)
 
-        # Titulo y logo
+    # Titulo y logo
 
-        tittle_register = tk.Label(
-            main_container_register, text="Mi Restaurante"
+    tittle_register = tk.Label(
+        main_container_register, text="Mi Restaurante"
+    )
+
+    tittle_register.configure(
+        font=("font_bold",20) # Estilos del texto
+    ) 
+    # Imprime el elemento con determinada posición
+    tittle_register.grid(row=0, column=0)
+
+    lbl_image_home = tk.Label(
+        main_container_register, image=image_home
+    ).grid(
+        row=1, column=0,pady=5
+    )
+
+    # Sub contenedor dentro del contenedor principal
+    sub_container_register = tk.Frame(main_container_register)
+
+    sub_container_register.grid(row=2, column=0, pady=15)
+    sub_container_register.configure(bg="#122c4b",padx=50)
+
+    # Titulo registrarse
+    text_register = tk.Label(
+        sub_container_register, text="Registrarse", font=(
+            "font_bold",16
+        ),bg="#122c4b",fg="#ffffff"
         )
+    text_register.grid(row=1,column=0)
 
-        tittle_register.configure(
-            font=("font_bold",20) # Estilos del texto
-            ) 
-        # Imprime el elemento con determinada posición
-        tittle_register.grid(row=0, column=0)
-
-        image_homeA = tk.PhotoImage(file="restaurante.png")
-        image_homeA = image_homeA.subsample(10)  # Tamaño de la imagen
-        lbl_image_homeA = tk.Label(
-            main_container_register, image=image_homeA
-        ).grid(
-            row=1, column=0,pady=5
+    # Entradas de inicio de sesión
+    # Registrarse
+    email_register = tk.Label(sub_container_register, text="Email")
+    email_register.configure(
+        bg="#122c4b",fg="#ffffff",font=("font_bold",12)
         )
+    email_register.grid(row=2, column=0, pady=3)
 
-        # Sub contenedor dentro del contenedor principal
-        sub_container_register = tk.Frame(main_container_register)
+    email_entry_register = tk.Entry(sub_container_register)
+    email_entry_register.grid(row=3, column=0)
 
-        sub_container_register.grid(row=2, column=0, pady=15)
-        sub_container_register.configure(bg="#122c4b",padx=50)
-
-        # Titulo registrarse
-        text_register = tk.Label(
-            sub_container_register, text="Registrarse", font=(
-                "font_bold",16
-            ),bg="#122c4b",fg="#ffffff"
+    password_register = tk.Label(
+        sub_container_register, text="Contraseña"
         )
-        text_register.grid(row=1,column=0)
-
-        # Entradas de inicio de sesión
-        # Registrarse
-        email_register = tk.Label(sub_container_register, text="Email")
-        email_register.configure(
-            bg="#122c4b",fg="#ffffff",font=("font_bold",12)
-            )
-        email_register.grid(row=2, column=0, pady=3)
-
-        email_entry_register = tk.Entry(sub_container_register)
-        email_entry_register.grid(row=3, column=0)
-
-        password_register = tk.Label(
-            sub_container_register, text="Contraseña"
-            )
-        password_register.configure(
-            bg="#122c4b", fg="#ffffff",font=("font_bold",12)
-            )
-        password_register.grid(row=4, column=0)
-
-        password_entry_register = tk.Entry(sub_container_register, show="*")
-        password_entry_register.grid(row=5, column=0)
-
-        confirm_register = tk.Label(
-            sub_container_register, text="Confirmar Contraseña"
-            )
-        confirm_register.configure(
-            bg="#122c4b", fg="#ffffff", font=("font_bold",12)
-            )
-        confirm_register.grid(row=6, column=0)
-
-        confirm_entry_register = tk.Entry(sub_container_register, show="*")
-        confirm_entry_register.grid(row=7, column=0)
-
-        # Boton registrar
-        button_register = tk.Button(
-            sub_container_register, text="Registrar",bg="#1aaadd",fg="#ffffff"
+    password_register.configure(
+        bg="#122c4b", fg="#ffffff",font=("font_bold",12)
         )
-        button_register.grid(row=8, column=0,pady=10)
+    password_register.grid(row=4, column=0)
+
+    password_entry_register = tk.Entry(sub_container_register, show="*")
+    password_entry_register.grid(row=5, column=0)
+
+    confirm_register = tk.Label(
+        sub_container_register, text="Confirmar Contraseña"
+        )
+    confirm_register.configure(
+        bg="#122c4b", fg="#ffffff", font=("font_bold",12)
+        )
+    confirm_register.grid(row=6, column=0)
+
+    confirm_entry_register = tk.Entry(sub_container_register, show="*")
+    confirm_entry_register.grid(row=7, column=0)
+
+    # Boton registrar
+    button_register = tk.Button(
+        sub_container_register, text="Registrar",bg="#1aaadd",
+        fg="#ffffff",command=log_in
+    )
+    button_register.grid(row=8, column=0,pady=10)
 
 
-    # ====================================VENTANA #3====================================
-
-
+    #====================================VENTANA #3====================================
+def log_in():
+    # Enlazar pestañas a la pestañas base
+    eyelashes_log_in = ttk.Frame(eyelashes_registerA,)
+    # Asignarle un nombre a cada pestaña
+    eyelashes_registerA.add(eyelashes_log_in,text="Inicio sesión")
+    
     # Se enlaza el reguistro a la pestaña
-
     frame1 = tk.Frame(eyelashes_log_in)
     frame1.grid(row=1, column=1,padx=125,pady=50)
 
@@ -113,10 +116,7 @@ def restaurant():
     textA = tk.Label(frame1, text="Mi Restaurante")
     textA.configure(font=("font_bold", 20))  # Estilos del texto
     textA.grid(row=0, column=0)  # Imprime el elemento con determinada posición
-
-    image_homeB = tk.PhotoImage(file="restaurante.png")
-    image_homeB = image_homeB.subsample(10)  # Tamaño de la imagen
-    lbl_image_homeB = tk.Label(frame1, image=image_homeB).grid(
+    lbl_image_home = tk.Label(frame1, image=image_home).grid(
         row=1, column=0, pady=5
     )  # Posicionamiento
 
@@ -151,13 +151,19 @@ def restaurant():
     bentry = tk.Entry(frame_gray)
     bentry.grid(row=4, column=1)
 
-    button_logC = tk.Button(frame_gray, text="Iniciar sesión", 
-        bg="#1aaadd", width=10, height=1)
+    button_logC = tk.Button(frame_gray, text="Iniciar sesión",
+        bg="#1aaadd", width=10, height=1,command=menu
+        )
     button_logC.configure(fg="white")
     button_logC.grid(row=5, column=1, pady=20)
 
     # ====================================VENTANA #4====================================
-
+def menu():
+    # Enlazar pestañas a la pestañas base
+    eyelashes_menu = ttk.Frame(eyelashes_registerA)
+    # Asignarle un nombre a cada pestaña
+    eyelashes_registerA.add(eyelashes_menu,text="Menu")
+    
     # Contenedor principal
     main_container_menu = tk.Frame(eyelashes_menu)
     main_container_menu.grid(row=0, column=0,padx=125,pady=50)
@@ -172,10 +178,8 @@ def restaurant():
     # Imprime el elemento con determinada posición
     tittle_dishes.grid(row=0, column=0)
     # Logo
-    image_homeC = tk.PhotoImage(file="restaurante.png")
-    image_homeC = image_homeC.subsample(10)  # Tamaño de la imagen
-    lbl_image_homeC = tk.Label(
-        main_container_menu, image=image_homeC
+    lbl_image_home = tk.Label(
+        main_container_menu, image=image_home
     ).grid(
         row=2, column=0,pady=5
     )
@@ -197,17 +201,19 @@ def restaurant():
     # Botones gestión
     button_menuA = tk.Button(
         sub_container_menu, 
-        text="Gestión de platos",bg="#1aaadd",fg="#ffffff"
+        text="Gestión de platos",bg="#1aaadd",fg="#ffffff",
+        command=management_dishes
     )
     button_menuA.grid(row=4, column=0,pady=10)
     button_menuB = tk.Button(
         sub_container_menu, 
-        text="Gestión de mesas",bg="#1aaadd",fg="#ffffff"
+        text="Gestión de mesas",bg="#1aaadd",fg="#ffffff",
+        command=management_tables
     )
     button_menuB.grid(row=5, column=0)
     button_menuC = tk.Button(
         sub_container_menu, text="Gestión de pedidos",
-        bg="#1aaadd",fg="#ffffff" # Boton registro
+        bg="#1aaadd",fg="#ffffff",command=management_orders
     )
     button_menuC.grid(row=6, column=0,pady=10)
     button_menuD = tk.Button(
@@ -219,15 +225,20 @@ def restaurant():
     # ====================================SUB-VENTANA Gestión de platos #3====================================
     # ====================================SUB-VENTANA Gestión de platos #3====================================
     # ====================================SUB-VENTANA Gestión de platos #3====================================
-
+def management_dishes():
+    # Enlazar pestañas a la pestañas base
+    eyelashes_dish_management = ttk.Frame(eyelashes_registerA)
+    # Asignarle un nombre a cada pestaña
+    eyelashes_registerA.add(
+        eyelashes_dish_management,text="Gestión de platos"
+        )
     def update():
         button_dishesA.destroy()
         button_dishesB.destroy()
         button_dishesC.destroy() 
         
-
         # Contenedor principal
-        main_container_dishes_update = tk.Frame(eyelashes_dish_managrment)
+        main_container_dishes_update = tk.Frame(eyelashes_dish_management)
         main_container_dishes_update.grid(row=0, column=0,padx=5,pady=20)
 
         # Titulo y logo
@@ -258,8 +269,8 @@ def restaurant():
 
         # Se actualiza el la poscición del Logo
         # Asi no desaparece
-        lbl_image_homeD = tk.Label(
-        main_container_dishes_update, image=image_homeD
+        lbl_image_home = tk.Label(
+        main_container_dishes_update, image=image_home
         ).grid(
             row=2, column=0,pady=5
         )
@@ -341,7 +352,7 @@ def restaurant():
         button_dishesB.destroy()
         button_dishesC.destroy()
         
-        main_container_dishes_add = tk.Frame(eyelashes_dish_managrment)
+        main_container_dishes_add = tk.Frame(eyelashes_dish_management)
         main_container_dishes_add.grid(row=0, column=0,padx=105,pady=50)
 
             
@@ -357,8 +368,8 @@ def restaurant():
         
         # Se actualiza el la poscición del Logo
         # Asi no desaparece
-        lbl_image_homeD = tk.Label(
-            main_container_dishes_add, image=image_homeD
+        lbl_image_home = tk.Label(
+            main_container_dishes_add, image=image_home
         ).grid(
             row=2, column=0,pady=5
         )
@@ -425,7 +436,7 @@ def restaurant():
     # ====================================VENTANA #5 Gestión de platos #1====================================
 
     # Contenedor principal
-    main_container_dishes = tk.Frame(eyelashes_dish_managrment)
+    main_container_dishes = tk.Frame(eyelashes_dish_management)
     main_container_dishes.grid(row=0, column=0,padx=125,pady=50)
 
     # Titulo y logo
@@ -437,11 +448,10 @@ def restaurant():
         ) 
     # Imprime el elemento con determinada posición
     tittle_dishes.grid(row=0, column=0)
+    
     # Logo
-    image_homeD = tk.PhotoImage(file="restaurante.png")
-    image_homeD = image_homeD.subsample(10)  # Tamaño de la imagen
-    lbl_image_homeD = tk.Label(
-        main_container_dishes, image=image_homeD
+    lbl_image_home = tk.Label(
+        main_container_dishes, image=image_home
     ).grid(
         row=2, column=0,pady=5
     )
@@ -468,7 +478,7 @@ def restaurant():
     button_dishesA.grid(row=4, column=0,pady=10)
     button_dishesB = tk.Button(
         sub_container_dishes, text="Eliminar",bg="#1aaadd",
-        fg="#ffffff",
+        fg="#ffffff"
     )
     button_dishesB.grid(row=5, column=0)
     button_dishesC = tk.Button(
@@ -480,7 +490,12 @@ def restaurant():
     # ====================================SUB-VENTANA Gestión de mesas #3====================================
     # ====================================SUB-VENTANA Gestión de mesas #3====================================
     # ====================================SUB-VENTANA Gestión de mesas #3====================================
-
+def management_tables():
+    # Enlazar pestañas a la pestañas base
+    eyelashes_table = ttk.Frame(eyelashes_registerA)
+    # Asignarle un nombre a cada pestaña
+    eyelashes_registerA.add(eyelashes_table,text="Gestión de mesas")
+    
     def tables_update():
         button_tablesA.destroy()
         button_tablesB.destroy()
@@ -518,8 +533,8 @@ def restaurant():
 
         # Se actualiza el la poscición del Logo
         # Asi no desaparece
-        lbl_image_homeD = tk.Label(
-        main_container_tables_update, image=image_homeD
+        lbl_image_home = tk.Label(
+        main_container_tables_update, image=image_home
         ).grid(
             row=2, column=0,pady=5
         )
@@ -610,8 +625,8 @@ def restaurant():
         
         # Se actualiza el la poscición del Logo
         # Asi no desaparece
-        lbl_image_homeD = tk.Label(
-            main_container_tables_add, image=image_homeD
+        lbl_image_home = tk.Label(
+            main_container_tables_add, image=image_home
         ).grid(
             row=2, column=0,pady=5
         )
@@ -685,10 +700,8 @@ def restaurant():
     # Imprime el elemento con determinada posición
     tittle_tables.grid(row=0, column=0)
     # Logo
-    image_homeE = tk.PhotoImage(file="restaurante.png")
-    image_homeE = image_homeE.subsample(10)  # Tamaño de la imagen
-    lbl_image_homeE = tk.Label(
-        main_container_tables, image=image_homeE
+    lbl_image_home = tk.Label(
+        main_container_tables, image=image_home
     ).grid(
         row=2, column=0,pady=5
     )
@@ -726,7 +739,12 @@ def restaurant():
     # ====================================VENTANA #7 Gestión de pedidos #2====================================
     # ====================================VENTANA #7 Gestión de pedidos #2====================================
     # ====================================VENTANA #7 Gestión de pedidos #2====================================
-
+def management_orders():
+    # Enlazar pestañas a la pestañas base
+    eyelashes_orders = ttk.Frame(eyelashes_registerA)
+    # Asignarle un nombre a cada pestaña
+    eyelashes_registerA.add(eyelashes_orders,text="Gestión de pedidos")
+    
     def do():
         button_ordersA.destroy()
         button_ordersB.destroy()
@@ -745,8 +763,8 @@ def restaurant():
         # Imprime el elemento con determinada posición
         tittle_orders_do.grid(row=0, column=0)
         
-        lbl_image_homeF = tk.Label(
-            main_container_orders_do, image=image_homeF
+        lbl_image_home = tk.Label(
+            main_container_orders_do, image=image_home
         ).grid(
             row=1, column=0,pady=5
         )
@@ -849,11 +867,10 @@ def restaurant():
         ) 
     # Imprime el elemento con determinada posición
     tittle_orders.grid(row=0, column=0)
+    
     # Logo
-    image_homeF = tk.PhotoImage(file="restaurante.png")
-    image_homeF = image_homeF.subsample(10)  # Tamaño de la imagen
-    lbl_image_homeF = tk.Label(
-        main_container_orders, image=image_homeF
+    lbl_image_home = tk.Label(
+        main_container_orders, image=image_home
     ).grid(
         row=2, column=0,pady=5
     )
@@ -895,6 +912,7 @@ if __name__ == "__main__":
 
     # def menu_r():
     # Creacion de la Ventana
+
     window_restaurant = tk.Tk()
     window_restaurant.geometry("515x450")
     window_restaurant.resizable(False,False)
@@ -909,23 +927,10 @@ if __name__ == "__main__":
 
     # Enlazar pestañas a la pestañas base
     eyelashes_restaurant = ttk.Frame(eyelashes_registerA)
-
-    eyelashes_log_in = ttk.Frame(eyelashes_registerA,)
-    eyelashes_menu = ttk.Frame(eyelashes_registerA)
-    eyelashes_dish_managrment = ttk.Frame(eyelashes_registerA)
-    eyelashes_table = ttk.Frame(eyelashes_registerA)
-    eyelashes_orders = ttk.Frame(eyelashes_registerA)
-
+    
     # Asignarle un nombre a cada pestaña
     eyelashes_registerA.add(eyelashes_restaurant,text="Inicio")
 
-    eyelashes_registerA.add(eyelashes_log_in,text="Inicio sesión")
-    eyelashes_registerA.add(eyelashes_menu,text="Menu")
-    eyelashes_registerA.add(
-        eyelashes_dish_managrment,text="Gestión de platos"
-        )
-    eyelashes_registerA.add(eyelashes_table,text="Gestión de mesas")
-    eyelashes_registerA.add(eyelashes_orders,text="Gestión de pedidos")
 
     # Definición de la fuente
     font_bold = ("Arial", 13, "bold")
@@ -962,17 +967,18 @@ if __name__ == "__main__":
 
     # Botones registrarse
     button_home = tk.Button(
-        container_main_home, text="Registrarse",bg="#1aaadd",fg="#ffffff",
+        container_main_home, text="Registrarse",bg="#1aaadd",
+        fg="#ffffff",command=register
         )
     button_home.grid(row=4, column=1,pady=8)
 
     # Botones iniciar sesión
     button_home = tk.Button(
-        container_main_home, text="Inicar sesión",bg="#1aaadd",fg="#ffffff"
+        container_main_home, text="Inicar sesión",
+        bg="#1aaadd",fg="#ffffff",command=log_in
         )
     button_home.grid(row=5, column=1,)
 
-    restaurant()
 
 
     window_restaurant.mainloop()  # Permite mantener en siclo el programa
