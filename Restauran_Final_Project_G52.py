@@ -9,9 +9,54 @@
 import tkinter as tk  # Importamos la libreria
 from tkinter import ttk
 from PIL import Image, ImageTk
+import hashlib
+from tkinter import messagebox
+import re
 
+    # ====================================Encriptadores====================================
+def register_user(email_entry_register, password_entry_register):
+    print("Siuuu")
+    # Validar el formato del email
+    email_pattern = re.compile(r"[a-zA-Z0-9._%+-]+@(gmail|hotmail|yahoo|outlook|correounivalle)\.(com|co)$")
+    if not email_pattern.match(email_entry_register.get()):
+        messagebox.showerror("Error", "Formato de email no válido")
+        return
 
+    # Validar el formato de la contraseña
+    password_pattern = re.compile(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$!?\&/])[A-Za-z\d@*$!?\&/]{10,}$')
+    if not password_pattern.match(password_entry_register.get()):
+        messagebox.showerror("Error", "Formato de contraseña no válido")
+        return
 
+    # Encriptar la contraseña con SHA-256
+    hashed_password = hashlib.sha256(password_entry_register.get().encode()).hexdigest()
+
+    # Guardar usuario y contraseña en archivos
+    with open("registro_inicio.txt", "a") as users_file:
+        users_file.write(f"{email_entry_register.get()}, {hashed_password}\n")
+
+    with open("password.txt", "a") as password_file:
+        password_file.write(f"{hashed_password}\n")
+    messagebox.showinfo("Registro", "Usuario registrado exitosamente")
+    return log_in()
+        
+##############################################FUNCION INICIAR SESION##################################
+def login_user(email_entry_log_in,passsword_log_in):
+    print("siuu")
+    # Encriptar la contraseña ingresada para compararla con la almacenada
+    hashed_password = hashlib.sha256(passsword_log_in.get().encode()).hexdigest()
+
+    # Consultar el archivo de contraseñas
+    with open("password.txt", "r") as password_file:
+        stored_passwords = password_file.read().splitlines()
+
+    # Validar el usuario y la contraseña
+    if f"{email_entry_log_in.get()}, {hashed_password}" in open("registro_inicio.txt").read():
+        messagebox.showinfo("Inicio de Sesión", "Inicio de sesión exitoso")
+        return menu()
+    else:
+        messagebox.showerror("Error", "Inicio de sesión fallido")
+        
     # ====================================VENTANA #2====================================
 def register():
     # Enlazar pestañas a la pestañas base
@@ -94,69 +139,71 @@ def register():
         fg="#ffffff",command=log_in
     )
     button_register.grid(row=8, column=0,pady=10)
+    button_register["command"]=lambda: register_user(email_entry_register, password_entry_register)
 
 
     #====================================VENTANA #3====================================
 def log_in():
     # Enlazar pestañas a la pestañas base
-    eyelashes_log_in = ttk.Frame(eyelashes_registerA,)
+    main_container_log_in = ttk.Frame(eyelashes_registerA,)
     # Asignarle un nombre a cada pestaña
-    eyelashes_registerA.add(eyelashes_log_in,text="Inicio sesión")
+    eyelashes_registerA.add(main_container_log_in,text="Inicio sesión")
     
     # Se enlaza el reguistro a la pestaña
-    frame1 = tk.Frame(eyelashes_log_in)
-    frame1.grid(row=1, column=1,padx=125,pady=50)
+    container_eyeslashes = tk.Frame(main_container_log_in)
+    container_eyeslashes.grid(row=1, column=1,padx=125,pady=50)
 
-    frame_gray = tk.Frame(frame1)
+    container_gray = tk.Frame(container_eyeslashes)
 
-    frame_gray.grid(row=2, column=0, pady=15)
+    container_gray.grid(row=2, column=0, pady=15)
     source_in = ("Arial", 13, "bold")
 
-    frame_gray.configure(bg="#122c4b", padx=11)
-    textA = tk.Label(frame1, text="Mi Restaurante")
-    textA.configure(font=("font_bold", 20))  # Estilos del texto
-    textA.grid(row=0, column=0)  # Imprime el elemento con determinada posición
-    lbl_image_home = tk.Label(frame1, image=image_home).grid(
+    container_gray.configure(bg="#122c4b", padx=11)
+    text_log_inA = tk.Label(container_eyeslashes, text="Mi Restaurante")
+    text_log_inA.configure(font=("font_bold", 20))  # Estilos del texto
+    text_log_inA.grid(row=0, column=0)  # Imprime el elemento con determinada posición
+    
+    # Logo
+    lbl_image_home = tk.Label(container_eyeslashes, image=image_home).grid(
         row=1, column=0, pady=5
     )  # Posicionamiento
 
     # Entradas de inicio de sesión
-
-    texiz = tk.Label(frame_gray, text="", font=source_in,
+    text_log_inB = tk.Label(container_gray, text="", font=source_in,
         bd=2, width=5, height=1)
-    texiz.configure(bg="#122c4b", fg="white")
-    texiz.grid(row=0, column=0)
+    text_log_inB.configure(bg="#122c4b", fg="white")
+    text_log_inB.grid(row=0, column=0)
 
-    texde = tk.Label(frame_gray, text="", font=source_in, 
+    _log_in = tk.Label(container_gray, text="", font=source_in, 
         bd=2, width=5, height=1)
-    texde.configure(bg="#122c4b", fg="white")
-    texde.grid(row=0, column=2)
+    _log_in.configure(bg="#122c4b", fg="white")
+    _log_in.grid(row=0, column=2)
 
-    textB = tk.Label(frame_gray, text="""Inicio Sesión""", 
+    log_in_log = tk.Label(container_gray, text="""Inicio Sesión""", 
         font=("font_bold", 16))
-    textB.configure(bg="#122c4b", fg="#ffffff")
-    textB.grid(row=0, column=1)
+    log_in_log.configure(bg="#122c4b", fg="#ffffff")
+    log_in_log.grid(row=0, column=1)
 
-    textE = tk.Label(frame_gray, text="Email", font=("font_bold", 12))
-    textE.configure(bg="#122c4b", fg="#ffffff")
-    textE.grid(row=1, column=1)
+    email_log_in = tk.Label(container_gray, text="Email", font=("font_bold", 12))
+    email_log_in.configure(bg="#122c4b", fg="#ffffff")
+    email_log_in.grid(row=1, column=1)
 
-    aentry = tk.Entry(frame_gray)
-    aentry.grid(row=2, column=1)
+    email_entry_log_in = tk.Entry(container_gray)
+    email_entry_log_in.grid(row=2, column=1)
 
-    textC = tk.Label(frame_gray, text="Contraseña", font=("font_bold", 12))
-    textC.configure(bg="#122c4b", fg="#ffffff")
-    textC.grid(row=3, column=1)
+    passsword_log_in = tk.Label(container_gray, text="Contraseña", font=("font_bold", 12))
+    passsword_log_in.configure(bg="#122c4b", fg="#ffffff")
+    passsword_log_in.grid(row=3, column=1)
 
-    bentry = tk.Entry(frame_gray)
-    bentry.grid(row=4, column=1)
+    passsword_log_in = tk.Entry(container_gray, show="*")
+    passsword_log_in.grid(row=4, column=1)
 
-    button_logC = tk.Button(frame_gray, text="Iniciar sesión",
+    button_log_inC = tk.Button(container_gray, text="Iniciar sesión",
         bg="#1aaadd", width=10, height=1,command=menu
         )
-    button_logC.configure(fg="white")
-    button_logC.grid(row=5, column=1, pady=20)
-
+    button_log_inC.configure(fg="white")
+    button_log_inC.grid(row=5, column=1, pady=20)
+    button_log_inC["command"]=lambda: (login_user(email_entry_log_in,passsword_log_in))
     # ====================================VENTANA #4====================================
 def menu():
     # Enlazar pestañas a la pestañas base
@@ -282,7 +329,7 @@ def management_dishes():
             'Nombre', 'Precio', 'Descripción', 'Disponibilidad'
             ), show='headings'
             )
-        # Define el alto de la tabla
+        # Define el alto de la tabla en filas
         table_dishes_update.config(height=3)
 
         # Se define el ancho de las columnas y el centrado del contenido
@@ -330,9 +377,15 @@ def management_dishes():
         # Se imprime la tabla
         table_dishes_update.grid(row=4, column=0, columnspan=2,padx=10)
 
+        # Elimina la fila seleccionada    
+        def delete_selected():
+            selected_item = table_dishes_update.selection()
+            table_dishes_update.delete(selected_item)
+            
         # Se crea el boton de eliminar actualizae
         delete_button_update = tk.Button(sub_container_dishesB_update, 
-            text='Eliminar',bg="#cc21cc", fg="white"
+            text='Eliminar',bg="#cc21cc",
+            fg="white",command=delete_selected
             )
         update_button_update = tk.Button(sub_container_dishesB_update, 
             text='Actualizar',bg="#1aaadd", fg="white"
@@ -586,10 +639,15 @@ def management_tables():
         # Se imprime la tabla
         table_tables_update.grid(row=4, column=0, columnspan=2,padx=10)
 
+        # Elimina la fila seleccionada    
+        def delete_tables_selected():
+            selected_item = table_tables_update.selection()
+            table_tables_update.delete(selected_item)
+
         # Se crea el boton de eliminar actualizae
         delete_button_update = tk.Button(
             sub_container_tablesB_update, text='Eliminar',
-            bg="#cc21cc", fg="white"
+            bg="#cc21cc", fg="white",command=delete_tables_selected
             )
         update_button_update = tk.Button(
             sub_container_tablesB_update, text='Actualizar',
