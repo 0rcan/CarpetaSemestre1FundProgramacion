@@ -15,7 +15,7 @@ import re
 
     # ====================================Encriptadores====================================
 def register_user(email_entry_register, password_entry_register):
-    print("Siuuu")
+    print("AMERICA")
     # Validar el formato del email
     email_pattern = re.compile(r"[a-zA-Z0-9._%+-]+@(gmail|hotmail|yahoo|outlook|correounivalle)\.(com|co)$")
     if not email_pattern.match(email_entry_register.get()):
@@ -42,7 +42,7 @@ def register_user(email_entry_register, password_entry_register):
         
 ##############################################FUNCION INICIAR SESION##################################
 def login_user(email_entry_log_in,passsword_log_in):
-    print("siuu")
+    print("AMERICA")
     # Encriptar la contraseña ingresada para compararla con la almacenada
     hashed_password = hashlib.sha256(passsword_log_in.get().encode()).hexdigest()
 
@@ -269,6 +269,7 @@ def menu():
     )
     button_menuD.grid(row=7, column=0,pady=10)
 
+
     # ====================================SUB-VENTANA Gestión de platos #3====================================
     # ====================================SUB-VENTANA Gestión de platos #3====================================
     # ====================================SUB-VENTANA Gestión de platos #3====================================
@@ -279,7 +280,11 @@ def management_dishes():
     eyelashes_registerA.add(
         eyelashes_dish_management,text="Gestión de platos"
         )
-    def update():
+    
+    def update(name,price,description,avavility):
+        
+        
+        
         button_dishesA.destroy()
         button_dishesB.destroy()
         button_dishesC.destroy() 
@@ -346,6 +351,12 @@ def management_dishes():
         table_dishes_update.heading('Descripción', text='Descripción')
         table_dishes_update.heading('Disponibilidad', 
             text='Disponibilidad')
+        
+        
+        # Añade los elementos enviados de los insputs a la tabla
+        new_element = [name, price, description, avavility]
+        table_dishes_update.insert('', 'end', values=(new_element))
+
 
         # Se insertan los datos en la tabla en el orden del teeeview
         table_dishes_update.insert('', 'end', values=(
@@ -395,12 +406,19 @@ def management_dishes():
         delete_button_update.grid(row=5, column=0,pady=15,padx=10)
         update_button_update.grid(row=5, column=0,columnspan=2,padx=10)
 
-
     # ====================================SUB-VENTANA Gestión de platos #2====================================
     # ====================================SUB-VENTANA Gestión de platos #2====================================
     # ====================================SUB-VENTANA Gestión de platos #2====================================
 
     def add():
+        #OBTIENE LAS ENTRADAS Y LAS GUARDA EN VARIABLES
+        def register_element():
+            name = name_entry_dishes_add.get()
+            price = price_entry_dishes_add.get()
+            description = description_entry_dishes_add.get()
+            avavility = availability_entry_dishes_add.get()
+            return update(name,price,description,avavility)
+        
         button_dishesA.destroy()
         button_dishesB.destroy()
         button_dishesC.destroy()
@@ -426,6 +444,7 @@ def management_dishes():
         ).grid(
             row=2, column=0,pady=5
         )
+            
             
         # Sub contenedor dentro del contenedor principal
         sub_container_dishesB_add = tk.Frame(main_container_dishes_add)
@@ -480,12 +499,13 @@ def management_dishes():
 
         # Ttitulo botón
         button_entry_dishes_add = tk.Button(
-            sub_container_dishesB_add, text="Agregar",bg="#1aaadd",fg="#ffffff" 
+            sub_container_dishesB_add, text="Agregar",bg="#1aaadd",
+            fg="#ffffff",command=register_element
         )
         # Botón
         button_entry_dishes_add.grid(row=8, columnspan=2, pady=20)
 
-        
+
     # ====================================VENTANA #5 Gestión de platos #1====================================
 
     # Contenedor principal
@@ -549,7 +569,7 @@ def management_tables():
     # Asignarle un nombre a cada pestaña
     eyelashes_registerA.add(eyelashes_table,text="Gestión de mesas")
     
-    def tables_update():
+    def tables_update(date,hour,people):
         button_tablesA.destroy()
         button_tablesB.destroy()
         button_tablesC.destroy() 
@@ -613,6 +633,10 @@ def management_tables():
         table_tables_update.heading('Hora', text='Hora')
         table_tables_update.heading('N.personas', text='N.personas')
 
+        # Añade los elementos enviados de los insputs a la tabla
+        new_element_tables = [date, hour, people]
+        table_tables_update.insert('', 'end', values=(new_element_tables))
+
         # Se insertan los datos en la tabla en el orden del teeeview
         table_tables_update.insert('', 'end', 
             values=('1', '20/102023', '10:300', '8')
@@ -658,18 +682,27 @@ def management_tables():
         delete_button_update.grid(row=5, column=0,pady=15,padx=10)
         update_button_update.grid(row=5, column=0,columnspan=2,padx=10)
 
+
+
     # ====================================SUB-VENTANA Gestión de mesas #2====================================
     # ====================================SUB-VENTANA Gestión de mesas #2====================================
     # ====================================SUB-VENTANA Gestión de mesas #2====================================
 
     def tables_add():
+        
+        #OBTIENE LAS ENTRADAS Y LAS GUARDA EN VARIABLES
+        def register_element_tables():
+            date =  date_entry_tables_add.get()
+            hour = hour_entry_tables_add.get()
+            description =  people_entry_tables_add.get()
+            return tables_update(date,hour,description)
+        
         button_tablesA.destroy()
         button_tablesB.destroy()
         button_tablesC.destroy()
         
         main_container_tables_add = tk.Frame(eyelashes_table)
         main_container_tables_add.grid(row=0, column=0,padx=105,pady=50)
-
             
         # Titulo y logo
         tittle_dishes_add = tk.Label(
@@ -705,36 +738,36 @@ def management_tables():
 
         # Entradas
         # Entrada nombres
-        name_tables_add = tk.Label(
+        date_tables_add = tk.Label(
             sub_container_tablesB_add, text="Fecha",
             bg="#122c4b",fg="#ffffff"
             )
-        name_tables_add.grid(row=4, column=0)
-        name_entry_tables_add = tk.Entry(sub_container_tablesB_add)
-        name_entry_tables_add.grid(row=5, column=0, pady=5,padx=15)
+        date_tables_add.grid(row=4, column=0)
+        date_entry_tables_add = tk.Entry(sub_container_tablesB_add)
+        date_entry_tables_add.grid(row=5, column=0, pady=5,padx=15)
 
         # Entrada Fechas
-        price_tables_add = tk.Label(
-            sub_container_tablesB_add, text="Fecha",bg="#122c4b",
+        hour_tables_add = tk.Label(
+            sub_container_tablesB_add, text="Hora",bg="#122c4b",
             fg="#ffffff"
             )
-        price_tables_add.grid(row=4, column=1)
-        price_entry_tables_add = tk.Entry(sub_container_tablesB_add)
-        price_entry_tables_add.grid(row=5, column=1,padx=10)
+        hour_tables_add.grid(row=4, column=1)
+        hour_entry_tables_add = tk.Entry(sub_container_tablesB_add)
+        hour_entry_tables_add.grid(row=5, column=1,padx=10)
 
         # Entrada Cantidad de personas
-        description_tables_add = tk.Label(
+        people_tables_add = tk.Label(
             sub_container_tablesB_add, text="Número de personas",
             bg="#122c4b",fg="#ffffff"
             )
-        description_tables_add.grid(row=6, column=0,pady=4)
-        description_entry_tables_add = tk.Entry(sub_container_tablesB_add)
-        description_entry_tables_add.grid(row=7, column=0)
+        people_tables_add.grid(row=6, column=0,pady=4)
+        people_entry_tables_add = tk.Entry(sub_container_tablesB_add)
+        people_entry_tables_add.grid(row=7, column=0)
         
         # Ttitulo botón
         button_entry_tables_add = tk.Button(
             sub_container_tablesB_add, text="Agregar",
-            bg="#1aaadd",fg="#ffffff"
+            bg="#1aaadd",fg="#ffffff",command=register_element_tables
         )
         # Botón
         button_entry_tables_add.grid(row=8, columnspan=2, pady=20)
